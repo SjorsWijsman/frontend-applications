@@ -27,7 +27,9 @@
   // Get which dataset to use
   let data = datasets[0];
 
-  onMount(async () => {
+  onMount(async () => drawChart())
+
+  function drawChart() {
     const container = select(el);
     // Set bar color
     const color = "var(--main-color)";
@@ -69,6 +71,9 @@
 
     // Get lowest Number
     const lowestNumber = min(data, item => item[scaleVar]);
+
+    // Remove previous svgs
+    const deleteSvgs = container.selectAll("svg").remove()
 
     // Create svg "canvas" to draw on
     const svg = container.append("svg")
@@ -140,7 +145,9 @@
       const remSize = select("html").style("font-size").replace("px", "");
       return size / 16 * remSize;
     }
-  });
+  };
+
+  window.addEventListener("resize", drawChart);
 </script>
 
 <section bind:this={el}>
