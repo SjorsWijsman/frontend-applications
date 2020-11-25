@@ -15,6 +15,7 @@ let el;
 let data;
 let tooltip;
 
+// Get Map Data from link & store in sessionStorage
 onMount(async () => {
   const storage = window.sessionStorage;
   data = JSON.parse(storage.getItem("data-37167725"));
@@ -24,10 +25,14 @@ onMount(async () => {
   }
 })
 
+// Draw Chart after update
 afterUpdate(async () => {
   drawChart()
 })
 
+/*
+  Draw Map Chart inside el container using data
+*/
 function drawChart() {
   // Set variable used to scale the map chart from selection
   const scaleVar = selected;
@@ -81,7 +86,9 @@ function drawChart() {
     .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
     .on("mouseout", (e, d) => tooltip.hideTooltip())
 
-  // Create Tooltip Text
+  /*
+    Create Tooltip text
+  */
   function tooltipText(d) {
     const gemeente = d.properties.statnaam;
     let value = gestolenPerGemeente[gemeente][scaleVar];

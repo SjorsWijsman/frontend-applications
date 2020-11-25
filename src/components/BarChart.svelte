@@ -20,12 +20,18 @@ let selected = selectionValues[0].value;
 let el;
 let tooltip;
 
+/*
+  Run Function on afterUpdate (also runs after selection update)
+*/
 afterUpdate(async () => {
   getDataFromSelection();
 })
 
 window.addEventListener("resize", () => getDataFromSelection(true));
 
+/*
+  Get Data from Selection and draw Chart
+*/
 function getDataFromSelection(redraw = false) {
   // Get selection from Select component
   let selectedList = selected.split(" ");
@@ -43,6 +49,9 @@ function getDataFromSelection(redraw = false) {
   drawChart(scaleVar, data, redraw)
 }
 
+/*
+  Draw Bar Chart inside el container using data
+*/
 function drawChart(scaleVar, data, redraw) {
   // Get container
   const container = select(el);
@@ -172,7 +181,9 @@ function drawChart(scaleVar, data, redraw) {
     .style("font-weight", "bold")
     .text(d => d[scaleVar])
 
-  // Sort, cut and reverse data
+  /*
+    Sort, cut and reverse data
+  */
   function transformData(data) {
     // Sort data
     switch (sort) {
@@ -199,14 +210,18 @@ function drawChart(scaleVar, data, redraw) {
     return data;
   }
 
-  // Convert size in px to new size in px relative to 1 rem
+  /*
+    Convert size in px to new size in px relative to 1 rem
+  */
   function relativeSize(size) {
     // Calculate rem size for calculating responsive sizes
     const remSize = select("html").style("font-size").replace("px", "");
     return size / 16 * remSize;
   }
 
-  // Create tooltip text displaying all information
+  /*
+    Create tooltip text displaying information per bar
+  */
   function tooltipText(d) {
     let tooltipText = "";
     for (const key of Object.keys(d)) {

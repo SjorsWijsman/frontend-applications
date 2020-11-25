@@ -23,14 +23,17 @@ export function showTooltip(e, d, tooltipText) {
 */
 export function hideTooltip() {
   const tooltip = select(".tooltip");
-  tooltip.transition()
-    .duration(200)
-    .style("opacity", 0);
+  .style("opacity", 0);
 }
+
+// Hide tooltip on scroll to prevent tooltip from staying on screen
+window.addEventListener('scroll', () => {
+  hideTooltip()
+});
 </script>
 
 <style>
-.tooltip {
+:global(.tooltip) {
   padding: 1rem;
   position: fixed;
   background-color: var(--background-color);
@@ -42,21 +45,21 @@ export function hideTooltip() {
   opacity: 0;
 }
 
-.tooltip > * {
+:global(.tooltip > *) {
   display: flex;
   align-items: center;
 }
 
-.tooltip > *:nth-child(odd) {
+:global(.tooltip > *:nth-child(odd)) {
   justify-content: flex-end;
   text-align: right;
 }
 
-.tooltip > *:nth-child(even) {
+:global(.tooltip > *:nth-child(even)) {
   font-weight: bold;
 }
 </style>
 
 <div class="tooltip">
-  <slot/>
+  <div>Placeholder: This should not be visible</div>
 </div>
