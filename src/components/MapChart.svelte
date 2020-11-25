@@ -1,5 +1,6 @@
 <script>
 import Select from "./Select.svelte";
+import Tooltip from "./Tooltip.svelte";
 import { onMount, afterUpdate } from "svelte";
 import * as topojson from "topojson";
 import { select } from "d3-selection";
@@ -12,6 +13,7 @@ export let selectionValues;
 let selected = selectionValues[0].value;
 let el;
 let data;
+let tooltip;
 
 onMount(async () => {
   const storage = window.sessionStorage;
@@ -76,10 +78,30 @@ function drawChart() {
     })
     .attr("stroke", strokeColor)
     .attr("stroke-width", "0.01px")
+    .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
+    .on("mouseout", (e, d) => tooltip.hideTooltip())
+
+  // Create Tooltip Text
+  function tooltipText(d) {
+    const gemeente = d.properties.statnaam;
+    let value = gestolenPerGemeente[gemeente][scaleVar];
+    if (gestolenPerGemeente[gemeente] !== undefined) {
+      if (typeof value === "number") {
+        value = value.toLocaleString("nl-nl");
+      } else {
+        value = value.replace(".", ",");
+      }
+    }
+    else {
+      value = "data onbekend";
+    }
+    return `<span>${gemeente}</span><span>${value}</span>`
+  }
 }
 </script>
 
 <section bind:this={el}>
   <slot/>
   <Select selectionValues={selectionValues} bind:selected/>
+  <Tooltip bind:this={tooltip}/>
 </section>

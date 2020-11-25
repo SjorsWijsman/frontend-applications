@@ -1,5 +1,6 @@
 <script>
 import Select from "./Select.svelte";
+import Tooltip from "./Tooltip.svelte";
 import { afterUpdate } from "svelte";
 import { select, selectAll } from "d3-selection";
 import { descending, ascending, max, min } from "d3-array";
@@ -17,6 +18,7 @@ const headers = diefstalrisicoHeaders;
 
 let selected = selectionValues[0].value;
 let el;
+let tooltip;
 
 afterUpdate(async () => {
   getDataFromSelection();
@@ -119,6 +121,8 @@ function drawChart(scaleVar, data, redraw) {
 
   const bar = bars.enter()
     .append("g")
+    .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
+    .on("mouseout", (e, d) => tooltip.hideTooltip())
 
   bar.append("rect")
     .attr("y", d => yScale(d[titleVar]))
@@ -201,10 +205,22 @@ function drawChart(scaleVar, data, redraw) {
     const remSize = select("html").style("font-size").replace("px", "");
     return size / 16 * remSize;
   }
+
+  // Create tooltip text displaying all information
+  function tooltipText(d) {
+    let tooltipText = "";
+    for (const key of Object.keys(d)) {
+      const title = headers[key].title || key;
+      const value = d[key].toLocaleString("nl-nl");
+      tooltipText += `<span>${title}</span><span>${value}</span>`;
+    }
+    return tooltipText
+  }
 }
 </script>
 
 <section bind:this={el}>
   <slot/>
   <Select selectionValues={selectionValues} bind:selected/>
+  <Tooltip bind:this={tooltip}/>
 </section>
