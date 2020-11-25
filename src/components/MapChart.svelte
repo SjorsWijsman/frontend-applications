@@ -9,7 +9,7 @@ import { gestolenPerGemeente } from "../data/gestolenPerGemeente.js";
 
 export let selectionValues;
 
-let selected = selectionValues[0];
+let selected = selectionValues[0].value;
 let el;
 let data;
 

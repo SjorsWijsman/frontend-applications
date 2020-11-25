@@ -15,7 +15,7 @@ export let titleVar;
 const datasets = [diefstalrisico, diefstalrisicoTypes];
 const headers = diefstalrisicoHeaders;
 
-let selected = selectionValues[0];
+let selected = selectionValues[0].value;
 let el;
 
 afterUpdate(async () => {
