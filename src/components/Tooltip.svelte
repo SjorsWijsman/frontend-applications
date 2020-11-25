@@ -21,14 +21,16 @@ export function showTooltip(e, d, tooltipText) {
 /*
   Hide tooltip
 */
-export function hideTooltip() {
-  const tooltip = select(".tooltip");
+export function hideTooltip(duration = 200) {
+  const tooltip = select(".tooltip")
+  .transition()
+  .duration(duration)
   .style("opacity", 0);
 }
 
 // Hide tooltip on scroll to prevent tooltip from staying on screen
 window.addEventListener('scroll', () => {
-  hideTooltip()
+  hideTooltip(0)
 });
 </script>
 

@@ -1,6 +1,7 @@
 <script>
 import BarChart from "./components/BarChart.svelte";
 import MapChart from "./components/MapChart.svelte";
+import GraphicChart from "./components/GraphicChart.svelte";
 import Info from "./components/Info.svelte";
 
 const barChartSelectionValues = [
@@ -46,6 +47,15 @@ const mapChartSelectionValues = [
 			Data van het LIV, CBS & regioatlas.nl respectievelijk over voertuigdiefstal, wagenpark & inwoners in 2019.
 		</Info>
 	</MapChart>
+	<GraphicChart>
+		<h2>Hoe worden auto’s gestolen?</h2>
+		<p>
+			Onderstaand overzicht geeft aan hoe auto’s gestolen worden en wat je eraan kan doen.
+		</p>
+		<Info>
+			Data komt ergens vandaan wat ik je lekker niet ga vertellen lol
+		</Info>
+	</GraphicChart>
 </main>
 <footer>
 	<section>

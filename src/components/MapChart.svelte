@@ -6,6 +6,7 @@ import * as topojson from "topojson";
 import { select } from "d3-selection";
 import { json } from "d3-fetch";
 import { geoMercator, geoPath } from "d3-geo";
+import { scaleLinear } from "d3-scale";
 import { gestolenPerGemeente } from "../data/gestolenPerGemeente.js";
 
 export let selectionValues;
@@ -49,14 +50,14 @@ function drawChart() {
     if (gestolenPerGemeente[item][scaleVar] > highestNumber) highestNumber = gestolenPerGemeente[item][scaleVar];
   }
 
-  // Remove previous svgs
-  const deleteSvgs = container.selectAll("svg").remove()
-
   // Add svg & add responsiveness with viewbox
-  const svg = container.append("svg")
-    .attr("width", "100%")
-    .attr("height", "80vh")
-    .attr("viewBox", "488.9 80 10.4 12.3")
+  let svg = container.select("svg")
+  if (svg.empty()) {
+    svg = container.append("svg")
+      .attr("width", "100%")
+      .attr("height", "80vh")
+      .attr("viewBox", "488.9 80 10.4 12.3")
+  }
 
   // Get geojson features from topojson
   const geojson = topojson.feature(data, data.objects.gemeente_2020).features;
@@ -65,22 +66,30 @@ function drawChart() {
   const projection = geoMercator()
 
   // Add projection to path generator
-  const path = geoPath()
+  const pathGenerator = geoPath()
     .projection(projection)
 
+  // Scale for scaling opacity
+  const opacityScale = scaleLinear()
+    .range([0.10, 1.00])
+    .domain([0, highestNumber])
+
   // Create group & append paths
-  const g = svg.append("g")
-    .selectAll("path")
+  const gemeentes = svg.selectAll("path")
     .data(geojson)
-    .enter()
+
+  gemeentes.exit()
+    .remove();
+
+  gemeentes.transition()
+    .duration(0)
+    .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
+
+  gemeentes.enter()
     .append("path")
-    .attr("d", path)
+    .attr("d", pathGenerator)
     .attr("fill", color)
-    .attr("opacity", (d) => {
-      const scale = gestolenPerGemeente[d.properties.statnaam][scaleVar] / highestNumber;
-      const intensity = 0.9;
-      return scale * intensity + 1-intensity;
-    })
+    .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
     .attr("stroke", strokeColor)
     .attr("stroke-width", "0.01px")
     .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
