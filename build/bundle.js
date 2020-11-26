@@ -10916,7 +10916,7 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			t = space();
     			create_component(select_1.$$.fragment);
-    			add_location(section, file$3, 126, 0, 3401);
+    			add_location(section, file$3, 130, 0, 3474);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11056,16 +11056,18 @@ var app = (function () {
 
     		gemeentes.exit().remove();
     		gemeentes.transition().duration(0).attr("opacity", d => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]));
+    		const gemeente = gemeentes.enter().append("g");
 
-    		gemeentes.enter().append("path").attr("d", pathGenerator).attr("fill", color).attr("opacity", d => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar])).attr("stroke", strokeColor).attr("stroke-width", "0.01px").on("mousemove", (e, d) => {
+    		gemeente.append("path").on("mousemove", (e, d) => {
     			tooltip.setText(tooltipText(d));
     			tooltip.showTooltip(e);
-    		}).on("mouseout", () => tooltip.hideTooltip());
+    		}).on("mouseout", () => tooltip.hideTooltip()).attr("d", pathGenerator).attr("fill", color).attr("opacity", d => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar])).attr("stroke", strokeColor).attr("stroke-width", "0.01px");
 
     		/*
       Create Tooltip text
     */
     		function tooltipText(d) {
+    			const scaleVar = selected;
     			const gemeente = d.properties.statnaam;
     			let value = gestolenPerGemeente[gemeente][scaleVar];
 
@@ -11861,7 +11863,7 @@ var app = (function () {
     	return block;
     }
 
-    // (50:2) <Info>
+    // (54:2) <Info>
     function create_default_slot_2(ctx) {
     	let t;
 
@@ -11881,7 +11883,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(50:2) <Info>",
+    		source: "(54:2) <Info>",
     		ctx
     	});
 
@@ -11892,8 +11894,10 @@ var app = (function () {
     function create_default_slot_1(ctx) {
     	let h2;
     	let t1;
-    	let p;
+    	let p0;
     	let t3;
+    	let p1;
+    	let t5;
     	let info;
     	let current;
 
@@ -11910,18 +11914,24 @@ var app = (function () {
     			h2 = element("h2");
     			h2.textContent = "Waar worden de meeste auto’s gestolen?";
     			t1 = space();
-    			p = element("p");
-    			p.textContent = "De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente.";
+    			p0 = element("p");
+    			p0.textContent = "De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente";
     			t3 = space();
+    			p1 = element("p");
+    			p1.textContent = "Wat op deze kaart vooral opvalt is het verschil tussen \"Auto's gestolen per 10.000 inwoners\" en \"Auto's gestolen per 10.000 auto's\".\n\t\t\tHet laatste geeft een veel gematigder verschil tussen de gemeentes weer: er zijn minder uitschieters.";
+    			t5 = space();
     			create_component(info.$$.fragment);
     			add_location(h2, file$7, 45, 2, 1609);
-    			add_location(p, file$7, 46, 2, 1659);
+    			add_location(p0, file$7, 46, 2, 1659);
+    			add_location(p1, file$7, 49, 2, 1816);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
+    			insert_dev(target, p0, anchor);
     			insert_dev(target, t3, anchor);
+    			insert_dev(target, p1, anchor);
+    			insert_dev(target, t5, anchor);
     			mount_component(info, target, anchor);
     			current = true;
     		},
@@ -11946,8 +11956,10 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(t5);
     			destroy_component(info, detaching);
     		}
     	};
@@ -11963,7 +11975,7 @@ var app = (function () {
     	return block;
     }
 
-    // (54:1) <GraphicChart tooltip={tooltip}>
+    // (58:1) <GraphicChart tooltip={tooltip}>
     function create_default_slot(ctx) {
     	let h2;
     	let t1;
@@ -11987,12 +11999,12 @@ var app = (function () {
     			span1 = element("span");
     			span1.textContent = "●";
     			t6 = text(".\n\t\t\tBeweeg de muis naar de rondjes toe om meer informatie te zien.");
-    			add_location(h2, file$7, 54, 2, 1993);
+    			add_location(h2, file$7, 58, 2, 2246);
     			set_style(span0, "color", "var(--error-color)");
-    			add_location(span0, file$7, 56, 63, 2099);
+    			add_location(span0, file$7, 60, 63, 2352);
     			set_style(span1, "color", "var(--succes-color)");
-    			add_location(span1, file$7, 57, 29, 2177);
-    			add_location(p, file$7, 55, 2, 2032);
+    			add_location(span1, file$7, 61, 29, 2430);
+    			add_location(p, file$7, 59, 2, 2285);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -12015,7 +12027,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(54:1) <GraphicChart tooltip={tooltip}>",
+    		source: "(58:1) <GraphicChart tooltip={tooltip}>",
     		ctx
     	});
 
@@ -12101,12 +12113,12 @@ var app = (function () {
     			add_location(h1, file$7, 30, 1, 1009);
     			add_location(header, file$7, 29, 0, 999);
     			add_location(main, file$7, 32, 0, 1086);
-    			add_location(p, file$7, 64, 2, 2348);
-    			attr_dev(a, "href", "https://github.com/SjorsWijsman/frontend-data");
+    			add_location(p, file$7, 68, 2, 2601);
+    			attr_dev(a, "href", "https://github.com/SjorsWijsman/frontend-applications");
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file$7, 65, 2, 2384);
-    			add_location(section, file$7, 63, 1, 2336);
-    			add_location(footer, file$7, 62, 0, 2326);
+    			add_location(a, file$7, 69, 2, 2637);
+    			add_location(section, file$7, 67, 1, 2589);
+    			add_location(footer, file$7, 66, 0, 2579);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
