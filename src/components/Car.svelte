@@ -1,6 +1,6 @@
 <style>
   svg {
-    margin: 2rem 2rem;
+    margin: 2rem 2rem
   }
 </style>
 

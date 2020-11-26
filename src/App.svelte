@@ -3,6 +3,9 @@ import BarChart from "./components/BarChart.svelte";
 import MapChart from "./components/MapChart.svelte";
 import GraphicChart from "./components/GraphicChart.svelte";
 import Info from "./components/Info.svelte";
+import Tooltip from "./components/Tooltip.svelte";
+
+let tooltip;
 
 const barChartSelectionValues = [
 	{value: "merk gestolen", text: "Merken - Aantal Gestolen"},
@@ -28,7 +31,8 @@ const mapChartSelectionValues = [
 	<h1>Hoe kan je ervoor zorgen dat je auto niet gestolen wordt?</h1>
 </header>
 <main>
-	<BarChart selectionValues={barChartSelectionValues} options={barChartOptions} titleVar={"merk"}>
+	<Tooltip bind:this={tooltip}/>
+	<BarChart tooltip={tooltip} selectionValues={barChartSelectionValues} options={barChartOptions} titleVar={"merk"}>
 		<h2>Wat voor auto’s worden het meest gestolen?</h2>
 		<p>
 			Onderstaande grafiek geeft automerken aan die naar verhouding het meest gestolen worden.
@@ -38,7 +42,7 @@ const mapChartSelectionValues = [
 			Data van het LIV over voertuigdiefstal in 2019.
 		</Info>
 	</BarChart>
-	<MapChart selectionValues={mapChartSelectionValues}>
+	<MapChart tooltip={tooltip} selectionValues={mapChartSelectionValues}>
 		<h2>Waar worden de meeste auto’s gestolen?</h2>
 		<p>
 			De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente.
@@ -47,10 +51,10 @@ const mapChartSelectionValues = [
 			Data van het LIV, CBS & regioatlas.nl respectievelijk over voertuigdiefstal, wagenpark & inwoners in 2019.
 		</Info>
 	</MapChart>
-	<GraphicChart>
+	<GraphicChart tooltip={tooltip}>
 		<h2>Hoe worden auto’s gestolen?</h2>
 		<p>
-			Onderstaand overzicht geeft aan hoe auto’s gestolen worden en wat je eraan kan doen.
+			Onderstaand overzicht laat zien hoe auto’s gestolen worden en wat je eraan kan doen.
 		</p>
 		<Info>
 			Data komt ergens vandaan wat ik je lekker niet ga vertellen lol

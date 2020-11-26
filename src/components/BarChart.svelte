@@ -1,6 +1,7 @@
 <script>
 import Select from "./Select.svelte";
 import Tooltip from "./Tooltip.svelte";
+import { relativeSize } from "../scripts/utils.js"
 import { afterUpdate } from "svelte";
 import { select, selectAll } from "d3-selection";
 import { descending, ascending, max, min } from "d3-array";
@@ -9,6 +10,7 @@ import { axisBottom, axisLeft } from "d3-axis";
 import { transition } from "d3-transition";
 import { diefstalrisico, diefstalrisicoTypes, diefstalrisicoHeaders } from "../data/diefstalrisico.js";
 
+export let tooltip;
 export let selectionValues;
 export let options;
 export let titleVar;
@@ -18,7 +20,6 @@ const headers = diefstalrisicoHeaders;
 
 let selected = selectionValues[0].value;
 let el;
-let tooltip;
 
 /*
   Run Function on afterUpdate (also runs after selection update)
@@ -126,18 +127,21 @@ function drawChart(scaleVar, data, redraw) {
     .remove();
 
   bars.transition()
-    .attr("width", d => xScale(d[scaleVar]))
+    .attr("width", (d) => xScale(d[scaleVar]))
 
   const bar = bars.enter()
     .append("g")
-    .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
-    .on("mouseout", (e, d) => tooltip.hideTooltip())
+    .on("mousemove", (e, d) => {
+      tooltip.setText(tooltipText(d))
+      tooltip.showTooltip(e)
+    })
+    .on("mouseout", () => tooltip.hideTooltip())
 
   bar.append("rect")
-    .attr("y", d => yScale(d[titleVar]))
+    .attr("y", (d) => yScale(d[titleVar]))
     .attr("height", yScale.bandwidth())
     .attr("x", 0)
-    .attr("width", d => xScale(d[scaleVar]))
+    .attr("width", (d) => xScale(d[scaleVar]))
     .style("fill", color)
 
   // Add text displaying titleVar (on top of the bar)
@@ -148,18 +152,18 @@ function drawChart(scaleVar, data, redraw) {
     .remove();
 
   titleVarText.transition()
-    .attr("x", d => xScale(d[scaleVar]) - 12)
-    .text(d => d[titleVar])
+    .attr("x", (d) => xScale(d[scaleVar]) - 12)
+    .text((d) => d[titleVar])
 
   bar.append("text")
     .attr("class", "titleVarText")
-    .attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2)
-    .attr("x", d => xScale(d[scaleVar]) - 12)
+    .attr("y", (d) => yScale(d[titleVar]) + yScale.bandwidth() / 2)
+    .attr("x", (d) => xScale(d[scaleVar]) - 12)
     .attr("alignment-baseline", "central")
     .attr("text-anchor", "end")
     .style("fill", backgroundColor)
     .style("font-weight", "bold")
-    .text(d => d[titleVar])
+    .text((d) => d[titleVar])
 
   // Add text displaying scaleVar (to the right of the bar)
   const scaleVarText = svg.selectAll(".scaleVarText")
@@ -170,16 +174,16 @@ function drawChart(scaleVar, data, redraw) {
 
   scaleVarText.transition()
     .attr("x", d => xScale(d[scaleVar]) + relativeSize(12))
-    .text(d => d[scaleVar])
+    .text((d) => d[scaleVar])
 
   bar.append("text")
     .attr("class", "scaleVarText")
-    .attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2)
-    .attr("x", d => xScale(d[scaleVar]) + relativeSize(12))
+    .attr("y", (d) => yScale(d[titleVar]) + yScale.bandwidth() / 2)
+    .attr("x", (d) => xScale(d[scaleVar]) + relativeSize(12))
     .attr("alignment-baseline", "central")
     .style("fill", textColor)
     .style("font-weight", "bold")
-    .text(d => d[scaleVar])
+    .text((d) => d[scaleVar])
 
   /*
     Sort, cut and reverse data
@@ -211,25 +215,19 @@ function drawChart(scaleVar, data, redraw) {
   }
 
   /*
-    Convert size in px to new size in px relative to 1 rem
-  */
-  function relativeSize(size) {
-    // Calculate rem size for calculating responsive sizes
-    const remSize = select("html").style("font-size").replace("px", "");
-    return size / 16 * remSize;
-  }
-
-  /*
     Create tooltip text displaying information per bar
   */
   function tooltipText(d) {
-    let tooltipText = "";
+    let tableContent = [];
     for (const key of Object.keys(d)) {
       const title = headers[key].title || key;
       const value = d[key].toLocaleString("nl-nl");
-      tooltipText += `<span>${title}</span><span>${value}</span>`;
+      tableContent.push([title, value])
     }
-    return tooltipText
+    return {
+      title: d[titleVar],
+      table: tableContent
+    }
   }
 }
 </script>
@@ -237,5 +235,4 @@ function drawChart(scaleVar, data, redraw) {
 <section bind:this={el}>
   <slot/>
   <Select selectionValues={selectionValues} bind:selected/>
-  <Tooltip bind:this={tooltip}/>
 </section>

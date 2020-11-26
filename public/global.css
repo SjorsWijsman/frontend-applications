@@ -1,6 +1,8 @@
 html {
   --main-color: #B7274C;
   --text-color: #12355D;
+  --succes-color: #6ED840;
+  --error-color: #E8184D;
   --background-color-dark: #E1EBF5;
   --background-color: #F9FAFC;
   font-size: calc(60% + 0.8vmin);

@@ -1,20 +1,33 @@
 <script>
 import Car from "./Car.svelte";
+import { relativeSize } from "../scripts/utils.js"
 import { onMount } from "svelte";
 import { select } from "d3-selection";
 import { scaleLinear } from "d3-scale";
 
+export let tooltip;
+
 const data = [
-  {x: 50, y: 50}
+  {x: 50, y: 40, type: "advice", title: "Alarm", text: "Zorg ervoor dat uw alarm goed werkt om inbrekers af te schikken."},
+  {x: 30, y: 88, type: "attack", title: "Zenders", text: "Zenders worden gebruikt door auto-dieven om te achterhalen wanneer de auto voor lange tijd stil zal staan."}
 ]
 
 let el;
 
 onMount(async () => {
-  const container = select(el)
+  drawChart()
+});
+
+/*
+  Draw Graphic Chart inside el container using data
+*/
+function drawChart() {
+  const container = select(el);
   const car = container.select("svg");
-  const viewBoxX = car.attr("viewBox").split(" ")[2]
-  const viewBoxY = car.attr("viewBox").split(" ")[3]
+  const viewBoxX = car.attr("viewBox").split(" ")[2];
+  const viewBoxY = car.attr("viewBox").split(" ")[3];
+
+  const radius = relativeSize(30);
 
   // Create x scale
   const xScale = scaleLinear()
@@ -26,11 +39,45 @@ onMount(async () => {
     .range([0, viewBoxY])
     .domain([0, 100])
 
-  car.append("rect")
-    .style("height", 20)
-    .style("width", 20)
-    .attr("transform", `translate(${xScale(data[0].x)},${yScale(data[0].y)})`)
-})
+  const point = car.selectAll(".point")
+    .data(data)
+    .enter()
+    .append("g")
+    .attr("class", "point")
+    .on("mousemove", (e, d) => {
+      tooltip.setText(tooltipText(d))
+      tooltip.showTooltip(e)
+    })
+    .on("mouseout", () => tooltip.hideTooltip())
+
+  const pointOuter = point.append("circle")
+    .attr("r", radius)
+    .attr("cx", (d) => xScale(d.x))
+    .attr("cy", (d) => yScale(d.y))
+    .style("fill", (d) => decideColor(d))
+}
+
+/*
+  Decide color based on type
+*/
+function decideColor(d) {
+  switch(d.type) {
+    case "advice":
+      return "var(--succes-color)"
+    case "attack":
+      return "var(--error-color)"
+  }
+}
+
+/*
+  Create Tooltip text
+*/
+function tooltipText(d) {
+  return {
+    title: d.title,
+    text: d.text,
+  }
+}
 </script>
 
 <section bind:this={el}>

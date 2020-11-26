@@ -9,12 +9,12 @@ import { geoMercator, geoPath } from "d3-geo";
 import { scaleLinear } from "d3-scale";
 import { gestolenPerGemeente } from "../data/gestolenPerGemeente.js";
 
+export let tooltip;
 export let selectionValues;
 
 let selected = selectionValues[0].value;
 let el;
 let data;
-let tooltip;
 
 // Get Map Data from link & store in sessionStorage
 onMount(async () => {
@@ -92,8 +92,11 @@ function drawChart() {
     .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
     .attr("stroke", strokeColor)
     .attr("stroke-width", "0.01px")
-    .on("mousemove", (e, d) => tooltip.showTooltip(e, d, tooltipText(d)))
-    .on("mouseout", (e, d) => tooltip.hideTooltip())
+    .on("mousemove", (e, d) => {
+      tooltip.setText(tooltipText(d))
+      tooltip.showTooltip(e)
+    })
+    .on("mouseout", () => tooltip.hideTooltip())
 
   /*
     Create Tooltip text
@@ -111,7 +114,9 @@ function drawChart() {
     else {
       value = "data onbekend";
     }
-    return `<span>${gemeente}</span><span>${value}</span>`
+    return {
+        table: [[gemeente, value]],
+      }
   }
 }
 </script>
@@ -119,5 +124,4 @@ function drawChart() {
 <section bind:this={el}>
   <slot/>
   <Select selectionValues={selectionValues} bind:selected/>
-  <Tooltip bind:this={tooltip}/>
 </section>
