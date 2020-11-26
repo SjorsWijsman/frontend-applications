@@ -6,9 +6,9 @@ export let selectionValues;
 export let selected;
 export let storageKey;
 
-
 const storage = window.sessionStorage;
-selected = JSON.parse(storage.getItem("data-" + storageKey));
+const storedSelection = JSON.parse(storage.getItem("data-" + storageKey));
+if (storedSelection) selected = storedSelection;
 
 afterUpdate(async () => {
   storage.setItem("data-" + storageKey, JSON.stringify(selected));
