@@ -31,6 +31,7 @@ Run `npm install` in de root folder ([download npm hier](https://nodejs.org/en/d
 ## Data gebruikt
 Barchart:
 * Statistiek voertuigdiefstal 2019 - Data aangevraagd bij het LIV  
+
 Kaart:  
 * Cartografische data - https://github.com/cartomap/nl
 * Gestolen auto's per gemeente - https://localfocuswidgets.net/5f0c4c5e18d62
