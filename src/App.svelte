@@ -45,7 +45,11 @@ const mapChartSelectionValues = [
 	<MapChart tooltip={tooltip} selectionValues={mapChartSelectionValues}>
 		<h2>Waar worden de meeste auto’s gestolen?</h2>
 		<p>
-			De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente.
+			De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente
+		</p>
+		<p>
+			Wat op deze kaart vooral opvalt is het verschil tussen "Auto's gestolen per 10.000 inwoners" en "Auto's gestolen per 10.000 auto's".
+			Het laatste geeft een veel gematigder verschil tussen de gemeentes weer: er zijn minder uitschieters.
 		</p>
 		<Info>
 			Data van het LIV, CBS & regioatlas.nl respectievelijk over voertuigdiefstal, wagenpark & inwoners in 2019.
@@ -63,6 +67,6 @@ const mapChartSelectionValues = [
 <footer>
 	<section>
 		<p>Gemaakt door Sjors Wijsman</p>
-		<a href="https://github.com/SjorsWijsman/frontend-data" target="_blank">Github link</a>
+		<a href="https://github.com/SjorsWijsman/frontend-applications" target="_blank">Github link</a>
 	</section>
 </footer>

@@ -88,23 +88,27 @@ function drawChart() {
     .duration(0)
     .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
 
-  gemeentes.enter()
-    .append("path")
-    .attr("d", pathGenerator)
-    .attr("fill", color)
-    .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
-    .attr("stroke", strokeColor)
-    .attr("stroke-width", "0.01px")
+  const gemeente = gemeentes.enter()
+    .append("g")
+
+  gemeente.append("path")
     .on("mousemove", (e, d) => {
       tooltip.setText(tooltipText(d))
       tooltip.showTooltip(e)
     })
     .on("mouseout", () => tooltip.hideTooltip())
+    .attr("d", pathGenerator)
+    .attr("fill", color)
+    .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
+    .attr("stroke", strokeColor)
+    .attr("stroke-width", "0.01px")
+
 
   /*
     Create Tooltip text
   */
   function tooltipText(d) {
+    const scaleVar = selected;
     const gemeente = d.properties.statnaam;
     let value = gestolenPerGemeente[gemeente][scaleVar];
     if (gestolenPerGemeente[gemeente] !== undefined) {
