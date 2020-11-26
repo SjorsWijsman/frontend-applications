@@ -16,20 +16,23 @@ let selected = selectionValues[0].value;
 let el;
 let data;
 
-// Get Map Data from link & store in sessionStorage
-onMount(async () => {
+// Draw Chart after update
+afterUpdate(async () => {
+  await getMapData()
+  drawChart()
+})
+
+/*
+  Get Map Data & Store in data variable
+*/
+async function getMapData() {
   const storage = window.sessionStorage;
   data = JSON.parse(storage.getItem("data-37167725"));
   if (data === null) {
     data = await json("https://cartomap.github.io/nl/wgs84/gemeente_2020.topojson");
     storage.setItem("data-37167725", JSON.stringify(data));
   }
-})
-
-// Draw Chart after update
-afterUpdate(async () => {
-  drawChart()
-})
+}
 
 /*
   Draw Map Chart inside el container using data

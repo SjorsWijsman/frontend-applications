@@ -10869,7 +10869,7 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			t = space();
     			create_component(select_1.$$.fragment);
-    			add_location(section, file$3, 123, 0, 3381);
+    			add_location(section, file$3, 126, 0, 3403);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10943,8 +10943,16 @@ var app = (function () {
     	let el;
     	let data;
 
-    	// Get Map Data from link & store in sessionStorage
-    	onMount(async () => {
+    	// Draw Chart after update
+    	afterUpdate(async () => {
+    		await getMapData();
+    		drawChart();
+    	});
+
+    	/*
+      Get Map Data & Store in data variable
+    */
+    	async function getMapData() {
     		const storage = window.sessionStorage;
     		data = JSON.parse(storage.getItem("data-37167725"));
 
@@ -10952,12 +10960,7 @@ var app = (function () {
     			data = await json("https://cartomap.github.io/nl/wgs84/gemeente_2020.topojson");
     			storage.setItem("data-37167725", JSON.stringify(data));
     		}
-    	});
-
-    	// Draw Chart after update
-    	afterUpdate(async () => {
-    		drawChart();
-    	});
+    	}
 
     	/*
       Draw Map Chart inside el container using data
@@ -11074,6 +11077,7 @@ var app = (function () {
     		selected,
     		el,
     		data,
+    		getMapData,
     		drawChart
     	});
 
