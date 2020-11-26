@@ -131,11 +131,6 @@ function drawChart(scaleVar, data, redraw) {
 
   const bar = bars.enter()
     .append("g")
-    .on("mousemove", (e, d) => {
-      tooltip.setText(tooltipText(d))
-      tooltip.showTooltip(e)
-    })
-    .on("mouseout", () => tooltip.hideTooltip())
 
   bar.append("rect")
     .attr("y", (d) => yScale(d[titleVar]))
@@ -143,6 +138,11 @@ function drawChart(scaleVar, data, redraw) {
     .attr("x", 0)
     .attr("width", (d) => xScale(d[scaleVar]))
     .style("fill", color)
+    .on("mousemove", (e, d) => {
+      tooltip.setText(tooltipText(d))
+      tooltip.showTooltip(e)
+    })
+    .on("mouseout", () => tooltip.hideTooltip())
 
   // Add text displaying titleVar (on top of the bar)
   const titleVarText = svg.selectAll(".titleVarText")
@@ -163,6 +163,7 @@ function drawChart(scaleVar, data, redraw) {
     .attr("text-anchor", "end")
     .style("fill", backgroundColor)
     .style("font-weight", "bold")
+    .style("pointer-events", "none")
     .text((d) => d[titleVar])
 
   // Add text displaying scaleVar (to the right of the bar)
@@ -183,6 +184,7 @@ function drawChart(scaleVar, data, redraw) {
     .attr("alignment-baseline", "central")
     .style("fill", textColor)
     .style("font-weight", "bold")
+    .style("pointer-events", "none")
     .text((d) => d[scaleVar])
 
   /*
@@ -220,9 +222,11 @@ function drawChart(scaleVar, data, redraw) {
   function tooltipText(d) {
     let tableContent = [];
     for (const key of Object.keys(d)) {
-      const title = headers[key].title || key;
-      const value = d[key].toLocaleString("nl-nl");
-      tableContent.push([title, value])
+      if (key !== titleVar) {
+        const title = headers[key].title || key;
+        const value = d[key].toLocaleString("nl-nl");
+        tableContent.push([title, value])
+      }
     }
     return {
       title: d[titleVar],

@@ -4991,7 +4991,7 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			t = space();
     			create_component(select_1.$$.fragment);
-    			add_location(section, file$2, 234, 0, 6264);
+    			add_location(section, file$2, 238, 0, 6382);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5176,27 +5176,26 @@ var app = (function () {
 
     		bars.exit().remove();
     		bars.transition().attr("width", d => xScale(d[scaleVar]));
+    		const bar = bars.enter().append("g");
 
-    		const bar = bars.enter().append("g").on("mousemove", (e, d) => {
+    		bar.append("rect").attr("y", d => yScale(d[titleVar])).attr("height", yScale.bandwidth()).attr("x", 0).attr("width", d => xScale(d[scaleVar])).style("fill", color).on("mousemove", (e, d) => {
     			tooltip.setText(tooltipText(d));
     			tooltip.showTooltip(e);
     		}).on("mouseout", () => tooltip.hideTooltip());
-
-    		bar.append("rect").attr("y", d => yScale(d[titleVar])).attr("height", yScale.bandwidth()).attr("x", 0).attr("width", d => xScale(d[scaleVar])).style("fill", color);
 
     		// Add text displaying titleVar (on top of the bar)
     		const titleVarText = svg.selectAll(".titleVarText").data(data);
 
     		titleVarText.exit().remove();
     		titleVarText.transition().attr("x", d => xScale(d[scaleVar]) - 12).text(d => d[titleVar]);
-    		bar.append("text").attr("class", "titleVarText").attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2).attr("x", d => xScale(d[scaleVar]) - 12).attr("alignment-baseline", "central").attr("text-anchor", "end").style("fill", backgroundColor).style("font-weight", "bold").text(d => d[titleVar]);
+    		bar.append("text").attr("class", "titleVarText").attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2).attr("x", d => xScale(d[scaleVar]) - 12).attr("alignment-baseline", "central").attr("text-anchor", "end").style("fill", backgroundColor).style("font-weight", "bold").style("pointer-events", "none").text(d => d[titleVar]);
 
     		// Add text displaying scaleVar (to the right of the bar)
     		const scaleVarText = svg.selectAll(".scaleVarText").data(data);
 
     		scaleVarText.exit().remove();
     		scaleVarText.transition().attr("x", d => xScale(d[scaleVar]) + relativeSize(12)).text(d => d[scaleVar]);
-    		bar.append("text").attr("class", "scaleVarText").attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2).attr("x", d => xScale(d[scaleVar]) + relativeSize(12)).attr("alignment-baseline", "central").style("fill", textColor).style("font-weight", "bold").text(d => d[scaleVar]);
+    		bar.append("text").attr("class", "scaleVarText").attr("y", d => yScale(d[titleVar]) + yScale.bandwidth() / 2).attr("x", d => xScale(d[scaleVar]) + relativeSize(12)).attr("alignment-baseline", "central").style("fill", textColor).style("font-weight", "bold").style("pointer-events", "none").text(d => d[scaleVar]);
 
     		/*
       Sort, cut and reverse data
@@ -5234,9 +5233,11 @@ var app = (function () {
     			let tableContent = [];
 
     			for (const key of Object.keys(d)) {
-    				const title = headers[key].title || key;
-    				const value = d[key].toLocaleString("nl-nl");
-    				tableContent.push([title, value]);
+    				if (key !== titleVar) {
+    					const title = headers[key].title || key;
+    					const value = d[key].toLocaleString("nl-nl");
+    					tableContent.push([title, value]);
+    				}
     			}
 
     			return { title: d[titleVar], table: tableContent };
