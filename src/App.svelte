@@ -54,11 +54,10 @@ const mapChartSelectionValues = [
 	<GraphicChart tooltip={tooltip}>
 		<h2>Hoe worden auto’s gestolen?</h2>
 		<p>
-			Onderstaand overzicht laat zien hoe auto’s gestolen worden en wat je eraan kan doen.
+			Onderstaand overzicht laat zien hoe auto’s gestolen worden: <span style="color: var(--error-color)">●</span>
+			en wat je eraan kan doen: <span style="color: var(--succes-color)">●</span>.
+			Beweeg de muis naar de rondjes toe om meer informatie te zien.
 		</p>
-		<Info>
-			Data komt ergens vandaan wat ik je lekker niet ga vertellen lol
-		</Info>
 	</GraphicChart>
 </main>
 <footer>

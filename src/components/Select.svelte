@@ -6,13 +6,14 @@ export let selectionValues;
 export let selected;
 export let storageKey;
 
+// Get selection from session storage
 const storage = window.sessionStorage;
 const storedSelection = JSON.parse(storage.getItem("data-" + storageKey));
 if (storedSelection) selected = storedSelection;
 
+// Update selection to session storage on change
 afterUpdate(async () => {
   storage.setItem("data-" + storageKey, JSON.stringify(selected));
-  console.log(selected)
 })
 </script>
 

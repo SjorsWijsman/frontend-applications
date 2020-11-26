@@ -27,7 +27,7 @@ function drawChart() {
   const viewBoxX = car.attr("viewBox").split(" ")[2];
   const viewBoxY = car.attr("viewBox").split(" ")[3];
 
-  const radius = relativeSize(30);
+  const radius = 30;
 
   // Create x scale
   const xScale = scaleLinear()
@@ -50,11 +50,24 @@ function drawChart() {
     })
     .on("mouseout", () => tooltip.hideTooltip())
 
-  const pointOuter = point.append("circle")
+  const pointCircle = point.append("circle")
     .attr("r", radius)
     .attr("cx", (d) => xScale(d.x))
     .attr("cy", (d) => yScale(d.y))
     .style("fill", (d) => decideColor(d))
+    .style("stroke", (d) => decideColor(d))
+    .style("stroke-width", 15)
+    .style("fill-opacity", 0.5)
+    .on("mouseover", (e, d) => {
+      select(e.target).transition()
+        .style("fill-opacity", 0.9)
+        .attr("r", radius + 5)
+    })
+    .on("mouseout", (e, d) => {
+      select(e.target).transition()
+        .style("fill-opacity", 0.5)
+        .attr("r", radius)
+    })
 }
 
 /*

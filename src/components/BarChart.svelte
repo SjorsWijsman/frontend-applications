@@ -18,8 +18,8 @@ export let titleVar;
 const datasets = [diefstalrisico, diefstalrisicoTypes];
 const headers = diefstalrisicoHeaders;
 
-let selected;
 let el;
+let selected;
 
 /*
   Run Function on afterUpdate (also runs after selection update)
@@ -61,7 +61,7 @@ function drawChart(scaleVar, data, redraw) {
   // Background & in bar text color
   const backgroundColor = "var(--background-color)";
   // Text color
-  const textColor = "var(--text-color)"
+  const textColor = "var(--text-color)";
   // Bar width
   const barWidth = relativeSize(60);
   // Bar gap
@@ -142,7 +142,9 @@ function drawChart(scaleVar, data, redraw) {
       tooltip.setText(tooltipText(d))
       tooltip.showTooltip(e)
     })
-    .on("mouseout", () => tooltip.hideTooltip())
+    .on("mouseout", () => {
+      tooltip.hideTooltip()
+    })
 
   // Add text displaying titleVar (on top of the bar)
   const titleVarText = svg.selectAll(".titleVarText")
@@ -230,7 +232,7 @@ function drawChart(scaleVar, data, redraw) {
     }
     return {
       title: d[titleVar],
-      table: tableContent
+      table: tableContent,
     }
   }
 }

@@ -28,14 +28,6 @@ export function hideTooltip(duration = 200) {
 /*
   Set tooltip text
 */
-
-// {
-//   title: "Titel",
-//   text: "Dit is een hoop text lol haha",
-//   table: [
-//     ["kans", 2000]
-//   ]
-// }
 export function setText(text) {
   const tooltip = select(".tooltip").html("")
   if (text.title) tooltip.append("h3").text(text.title)
