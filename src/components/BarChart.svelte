@@ -18,7 +18,7 @@ export let titleVar;
 const datasets = [diefstalrisico, diefstalrisicoTypes];
 const headers = diefstalrisicoHeaders;
 
-let selected = selectionValues[0].value;
+let selected;
 let el;
 
 /*
@@ -238,5 +238,5 @@ function drawChart(scaleVar, data, redraw) {
 
 <section bind:this={el}>
   <slot/>
-  <Select selectionValues={selectionValues} bind:selected/>
+  <Select selectionValues={selectionValues} bind:selected storageKey={87658744}/>
 </section>

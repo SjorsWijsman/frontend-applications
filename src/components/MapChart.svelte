@@ -85,7 +85,7 @@ function drawChart() {
     .remove();
 
   gemeentes.transition()
-    .duration(500)
+    .duration(0)
     .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
 
   gemeentes.enter()
@@ -126,5 +126,5 @@ function drawChart() {
 
 <section bind:this={el}>
   <slot/>
-  <Select selectionValues={selectionValues} bind:selected/>
+  <Select selectionValues={selectionValues} bind:selected storageKey={30753491}/>
 </section>

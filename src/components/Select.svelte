@@ -1,6 +1,19 @@
 <script>
+import { afterUpdate } from "svelte";
+import { select } from "d3-selection";
+
 export let selectionValues;
 export let selected;
+export let storageKey;
+
+
+const storage = window.sessionStorage;
+selected = JSON.parse(storage.getItem("data-" + storageKey));
+
+afterUpdate(async () => {
+  storage.setItem("data-" + storageKey, JSON.stringify(selected));
+  console.log(selected)
+})
 </script>
 
 <style>
