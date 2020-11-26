@@ -1,105 +1,37 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# frontend-applications
+Repo voor de HvA CMD course Frontend Applications. Het einddoel van dit project is om een visualisatie te creëeren die gebruikt kan worden door de Volkskrant voor een nieuwsbericht.
 
----
+De deelvraag die ik heb onderzocht is:
+"Hoe kan je ervoor zorgen dat je auto niet gestolen wordt?"
 
-# svelte app
+Live demo: https://sjorswijsman.github.io/frontend-applications/
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+## Concept
+Om deze deelvraag te visualiseren heb ik 3 visualisaties gemaakt die drie onderliggende deelvragen beantwoorden:
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+### Wat voor auto's worden het meest gestolen?
+![barchart](https://i.ibb.co/f9SVQtV/barchart.png)
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+### Waar worden de meeste auto's gestolen?
+![map](https://i.ibb.co/rwxH1fn/map.png)
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+### ~Hoe worden auto's gestolen?~
+*Deze visualisatie heb ik helaas niet gemaakt.*
 
+## Handleiding
+Open `index.html` in een browser om de visualisaties te bekijken. Er is een actieve internetverbinding nodig om data op te halen om de kaart te visualiseren.
 
-## Get started
+Gebruik de dropdown menu's om te interacteren met de data. Hover over de visualisaties heen om meer informatie te krijgen.
 
-Install the dependencies...
+_Om aanpassingen te maken:_
+Run `npm install` in de root folder ([download npm hier](https://nodejs.org/en/download/)) om Rollup te laten werken.
 
-```bash
-cd svelte-app
-npm install
-```
+## Data gebruikt
+Barchart:
+* Statistiek voertuigdiefstal 2019 - Data aangevraagd bij het LIV  
 
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+Kaart:  
+* Cartografische data - https://github.com/cartomap/nl
+* Gestolen auto's per gemeente - https://localfocuswidgets.net/5f0c4c5e18d62
+* Inwoners per gemeente - https://www.uitvoeringvanbeleidszw.nl/subsidies-en-regelingen/veranderopgave-inburgering-pilots/documenten/publicaties/subsidies/veranderopgave-inburgering-pilots/tabel-aantal-inwoners-gemeenten-per-1-januari-2019/tabel-aantal-inwoners-gemeenten-per-1-januari-2019
+* Auto's per gemeente - https://opendata.cbs.nl/statline/#/CBS/nl/dataset/37209HVV/table?fromstatweb
