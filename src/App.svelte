@@ -38,6 +38,9 @@ const mapChartSelectionValues = [
 			Onderstaande grafiek geeft automerken aan die naar verhouding het meest gestolen worden.
 			Er kan ook gefilterd worden op alleen autotypes.
 		</p>
+		<p>
+			Het valt hierbij meteen op dat Volkswagens veruit het meeste gestolen worden, maar vergeleken met andere merken als Land Rover, Lexus en Audi een lager risico lopen om gestolen te worden.
+		</p>
 		<Info>
 			Data van het LIV over voertuigdiefstal in 2019.
 		</Info>
@@ -63,7 +66,7 @@ const mapChartSelectionValues = [
 			Beweeg de muis naar de rondjes toe om meer informatie te zien.
 		</p>
 		<Info>
-			Data van zelfverzekerd.nl en consumentenbond.nl
+			Informatie van zelfverzekerd.nl en consumentenbond.nl.
 		</Info>
 	</GraphicChart>
 </main>
