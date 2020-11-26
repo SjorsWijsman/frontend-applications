@@ -1,12 +1,10 @@
-# frontend-data
-Repo voor de HvA CMD course Functional Programming. Het einddoel van dit project is om een visualisatie te creëeren die gebruikt kan worden door de Volkskrant voor een nieuwsbericht.
+# frontend-applications
+Repo voor de HvA CMD course Frontend Applications. Het einddoel van dit project is om een visualisatie te creëeren die gebruikt kan worden door de Volkskrant voor een nieuwsbericht.
 
 De deelvraag die ik heb onderzocht is:
 "Hoe kan je ervoor zorgen dat je auto niet gestolen wordt?"
 
-Live demo: https://sjorswijsman.github.io/frontend-data/
-
-Mijn code voor Functional Programming is [hier](https://github.com/SjorsWijsman/functional-programming) terug te vinden. De wiki is volledig verplaatst naar de wiki van deze repo.
+Live demo: https://sjorswijsman.github.io/frontend-applications/
 
 ## Concept
 Om deze deelvraag te visualiseren heb ik 3 visualisaties gemaakt die drie onderliggende deelvragen beantwoorden:
