@@ -1,0 +1,11 @@
+.svelte-1c4oiuk.svelte-1c4oiuk{padding:0;margin:0;box-sizing:border-box;font-size:1rem;font-family:'Noto Sans JP', sans-serif;color:var(--text-color)
+}main.svelte-1c4oiuk.svelte-1c4oiuk{max-width:60rem;margin:0 auto;padding:3rem 0.8rem}header.svelte-1c4oiuk.svelte-1c4oiuk{max-width:60rem;margin:0 auto;padding:3rem 0.8rem;padding-bottom:0}footer.svelte-1c4oiuk.svelte-1c4oiuk{background-color:var(--text-color)}footer.svelte-1c4oiuk>.svelte-1c4oiuk{max-width:60rem;margin:0 auto;padding:3rem 0.8rem}footer.svelte-1c4oiuk .svelte-1c4oiuk{color:var(--off-white)}h1.svelte-1c4oiuk.svelte-1c4oiuk{font-size:calc(2rem + 1vmin);font-weight:700;text-align:center}h2.svelte-1c4oiuk.svelte-1c4oiuk{font-size:1.6rem;font-weight:400;margin-bottom:0.3em;margin-top:2em}p.svelte-1c4oiuk.svelte-1c4oiuk{font-size:1rem;font-weight:300;margin-bottom:1em}main.svelte-1c4oiuk>section.svelte-1c4oiuk{background-color:var(--off-white)}
+.chart.svelte-16mgb46 div{font:10px sans-serif;background-color:steelblue;text-align:right;padding:3px;margin:1px;color:white}
+.bar.svelte-1mvktnb{fill:#5f89ad}.axis.svelte-1mvktnb{font-size:13px}.label.svelte-1mvktnb{font-size:13px}
+svg.svelte-s141pz{margin:2rem 2rem
+  }
+.info.svelte-18tlo0q{background-color:var(--background-color-dark);padding:0.8rem 1rem;border-radius:0.5rem;opacity:0.8}.info.svelte-18tlo0q:hover{opacity:1}.info.svelte-18tlo0q::before{content:"!";background-color:var(--background-color);display:inline-block;text-align:center;width:1.5rem;height:1.5rem;border-radius:1.5rem;margin-right:0.5rem}
+select.svelte-e5kcei{cursor:pointer;border:none;border-radius:0.5rem;margin-bottom:1em;padding:0 0.5em;height:3em;background-color:var(--white);opacity:0.8}select.svelte-e5kcei:hover{background-color:var(--light-blue);opacity:1}
+.tooltip.svelte-1hpa1xl{position:fixed;pointer-events:none;max-width:25rem;z-index:10;opacity:0}.tooltip > *{padding:1rem;margin:0.2rem;background-color:var(--background-color)}.tooltip .table{display:grid;grid-template-columns:1fr 1fr;grid-gap:0.5rem}.tooltip .table > span{display:flex;align-items:center}.tooltip .table > span:nth-child(odd){justify-content:flex-end;text-align:right}.tooltip .table > span:nth-child(even){font-weight:bold}
+
+/*# sourceMappingURL=bundle.css.map */
