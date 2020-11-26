@@ -16,6 +16,7 @@ html {
   margin: 0;
   box-sizing: border-box;
   font-size: 1rem;
+  font-weight: 300;
   font-family: 'Noto Sans JP', sans-serif;
   color: var(--text-color);
 }
@@ -68,6 +69,5 @@ h3 {
 
 p {
   font-size: 1rem;
-  font-weight: 300;
   margin-bottom: 1em;
 }

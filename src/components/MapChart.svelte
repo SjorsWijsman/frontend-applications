@@ -82,7 +82,7 @@ function drawChart() {
     .remove();
 
   gemeentes.transition()
-    .duration(0)
+    .duration(500)
     .attr("opacity", (d) => opacityScale(gestolenPerGemeente[d.properties.statnaam][scaleVar]))
 
   gemeentes.enter()
