@@ -62,6 +62,9 @@ const mapChartSelectionValues = [
 			en wat je eraan kan doen: <span style="color: var(--succes-color)">●</span>.
 			Beweeg de muis naar de rondjes toe om meer informatie te zien.
 		</p>
+		<Info>
+			Data van zelfverzekerd.nl en consumentenbond.nl
+		</Info>
 	</GraphicChart>
 </main>
 <footer>

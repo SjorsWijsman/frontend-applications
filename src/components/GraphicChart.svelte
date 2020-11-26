@@ -4,13 +4,9 @@ import { relativeSize } from "../scripts/utils.js"
 import { onMount } from "svelte";
 import { select } from "d3-selection";
 import { scaleLinear } from "d3-scale";
+import { autoInbraak } from "../data/autoInbraak.js";
 
 export let tooltip;
-
-const data = [
-  {x: 50, y: 40, type: "advice", title: "Alarm", text: "Zorg ervoor dat uw alarm goed werkt om inbrekers af te schikken."},
-  {x: 30, y: 88, type: "attack", title: "Zenders", text: "Zenders worden gebruikt door auto-dieven om te achterhalen wanneer de auto voor lange tijd stil zal staan."}
-]
 
 let el;
 
@@ -40,7 +36,7 @@ function drawChart() {
     .domain([0, 100])
 
   const point = car.selectAll(".point")
-    .data(data)
+    .data(autoInbraak)
     .enter()
     .append("g")
     .attr("class", "point")
