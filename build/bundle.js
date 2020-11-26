@@ -1364,14 +1364,14 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
+    	child_ctx[6] = list[i];
     	return child_ctx;
     }
 
-    // (38:1) {#each selectionValues as option}
+    // (39:1) {#each selectionValues as option}
     function create_each_block(ctx) {
     	let option;
-    	let t0_value = /*option*/ ctx[5].text + "";
+    	let t0_value = /*option*/ ctx[6].text + "";
     	let t0;
     	let t1;
     	let option_value_value;
@@ -1381,9 +1381,9 @@ var app = (function () {
     			option = element("option");
     			t0 = text(t0_value);
     			t1 = space();
-    			option.__value = option_value_value = /*option*/ ctx[5].value;
+    			option.__value = option_value_value = /*option*/ ctx[6].value;
     			option.value = option.__value;
-    			add_location(option, file, 38, 2, 749);
+    			add_location(option, file, 39, 2, 811);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1391,9 +1391,9 @@ var app = (function () {
     			append_dev(option, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*selectionValues*/ 2 && t0_value !== (t0_value = /*option*/ ctx[5].text + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*selectionValues*/ 2 && t0_value !== (t0_value = /*option*/ ctx[6].text + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*selectionValues*/ 2 && option_value_value !== (option_value_value = /*option*/ ctx[5].value)) {
+    			if (dirty & /*selectionValues*/ 2 && option_value_value !== (option_value_value = /*option*/ ctx[6].value)) {
     				prop_dev(option, "__value", option_value_value);
     				option.value = option.__value;
     			}
@@ -1407,7 +1407,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(38:1) {#each selectionValues as option}",
+    		source: "(39:1) {#each selectionValues as option}",
     		ctx
     	});
 
@@ -1437,7 +1437,7 @@ var app = (function () {
     			attr_dev(select_1, "selected", /*selected*/ ctx[0]);
     			attr_dev(select_1, "class", "svelte-e5kcei");
     			if (/*selected*/ ctx[0] === void 0) add_render_callback(() => /*select_1_change_handler*/ ctx[3].call(select_1));
-    			add_location(select_1, file, 36, 0, 661);
+    			add_location(select_1, file, 37, 0, 723);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1517,7 +1517,8 @@ var app = (function () {
     	let { selected } = $$props;
     	let { storageKey } = $$props;
     	const storage = window.sessionStorage;
-    	selected = JSON.parse(storage.getItem("data-" + storageKey));
+    	const storedSelection = JSON.parse(storage.getItem("data-" + storageKey));
+    	if (storedSelection) selected = storedSelection;
 
     	afterUpdate(async () => {
     		storage.setItem("data-" + storageKey, JSON.stringify(selected));
@@ -1548,7 +1549,8 @@ var app = (function () {
     		selectionValues,
     		selected,
     		storageKey,
-    		storage
+    		storage,
+    		storedSelection
     	});
 
     	$$self.$inject_state = $$props => {
