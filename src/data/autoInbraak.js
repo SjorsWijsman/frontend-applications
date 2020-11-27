@@ -10,7 +10,7 @@ export const autoInbraak = [{
     y: 10,
     type: "advice",
     title: "Licht",
-    text: "Zet uw auto op een goed verlichtte parkeerplaats."
+    text: "Zet uw auto op een goed verlichte parkeerplaats."
   },
   {
     x: 90,

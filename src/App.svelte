@@ -39,7 +39,7 @@ const mapChartSelectionValues = [
 			Er kan ook gefilterd worden op alleen autotypes.
 		</p>
 		<p>
-			Het valt hierbij meteen op dat Volkswagens veruit het meeste gestolen worden, maar vergeleken met andere merken als Land Rover, Lexus en Audi een lager risico lopen om gestolen te worden.
+			Het valt hierbij meteen op dat Volkswagens veruit het meest gestolen worden, maar vergeleken met andere merken als Land Rover, Lexus en Audi een lager risico lopen om gestolen te worden.
 		</p>
 		<Info>
 			Data van het LIV over voertuigdiefstal in 2019.
@@ -48,7 +48,7 @@ const mapChartSelectionValues = [
 	<MapChart tooltip={tooltip} selectionValues={mapChartSelectionValues}>
 		<h2>Waar worden de meeste auto’s gestolen?</h2>
 		<p>
-			De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente
+			De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente.
 		</p>
 		<p>
 			Wat op deze kaart vooral opvalt is het verschil tussen "Auto's gestolen per 10.000 inwoners" en "Auto's gestolen per 10.000 auto's".
