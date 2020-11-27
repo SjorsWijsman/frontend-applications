@@ -10,13 +10,13 @@ Live demo: https://sjorswijsman.github.io/frontend-applications/
 Om deze deelvraag te visualiseren heb ik 3 visualisaties gemaakt die drie onderliggende deelvragen beantwoorden:
 
 ### Wat voor auto's worden het meest gestolen?
-![barchart](https://i.ibb.co/f9SVQtV/barchart.png)
+![barchart](https://i.ibb.co/ySq6qjy/barchart.png)
 
 ### Waar worden de meeste auto's gestolen?
-![map](https://i.ibb.co/rwxH1fn/map.png)
+![map](https://i.ibb.co/JvstPHr/mapchart.png)
 
 ### ~Hoe worden auto's gestolen?~
-*Deze visualisatie heb ik helaas niet gemaakt.*
+![graphic](https://i.ibb.co/Xp3G5NB/graphicchart.png)
 
 ## Handleiding
 Open `index.html` in een browser om de visualisaties te bekijken. Er is een actieve internetverbinding nodig om data op te halen om de kaart te visualiseren.
@@ -35,3 +35,6 @@ Kaart:
 * Gestolen auto's per gemeente - https://localfocuswidgets.net/5f0c4c5e18d62
 * Inwoners per gemeente - https://www.uitvoeringvanbeleidszw.nl/subsidies-en-regelingen/veranderopgave-inburgering-pilots/documenten/publicaties/subsidies/veranderopgave-inburgering-pilots/tabel-aantal-inwoners-gemeenten-per-1-januari-2019/tabel-aantal-inwoners-gemeenten-per-1-januari-2019
 * Auto's per gemeente - https://opendata.cbs.nl/statline/#/CBS/nl/dataset/37209HVV/table?fromstatweb
+
+Graphic:
+* 
