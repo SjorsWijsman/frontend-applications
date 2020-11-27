@@ -15,7 +15,7 @@ Om deze deelvraag te visualiseren heb ik 3 visualisaties gemaakt die drie onderl
 ### Waar worden de meeste auto's gestolen?
 ![map](https://i.ibb.co/JvstPHr/mapchart.png)
 
-### ~Hoe worden auto's gestolen?~
+### Hoe worden auto's gestolen?
 ![graphic](https://i.ibb.co/Xp3G5NB/graphicchart.png)
 
 ## Handleiding
@@ -24,7 +24,9 @@ Open `index.html` in een browser om de visualisaties te bekijken. Er is een acti
 Gebruik de dropdown menu's om te interacteren met de data. Hover over de visualisaties heen om meer informatie te krijgen.
 
 _Om aanpassingen te maken:_
-Run `npm install` in de root folder ([download npm hier](https://nodejs.org/en/download/)) om Rollup te laten werken.
+Run `npm install` in de root folder ([download npm hier](https://nodejs.org/en/download/)) om de dependencies te installeren.
+
+Run daarna `npm run dev` om Rollup te laten werken en een live server op localhost:5000 te starten.
 
 ## Data gebruikt
 Barchart:
@@ -37,4 +39,5 @@ Kaart:
 * Auto's per gemeente - https://opendata.cbs.nl/statline/#/CBS/nl/dataset/37209HVV/table?fromstatweb
 
 Graphic:
-* 
+* Hoe kan u uw auto beveiligen - https://zelfverzekerd.verzekeruzelf.nl/
+* Hoe worden auto's gestolen - https://www.consumentenbond.nl/autoverzekering/
