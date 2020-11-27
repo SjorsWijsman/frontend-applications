@@ -1,5 +1,4 @@
 
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -3321,7 +3320,7 @@ var app = (function () {
           step = start, start = stop, stop = step;
           step = i0, i0 = i1, i1 = step;
         }
-        
+
         while (maxIter-- > 0) {
           step = tickIncrement(start, stop, count);
           if (step === prestep) {
@@ -5189,7 +5188,7 @@ var app = (function () {
     			container.append("svg").attr("width", "100%").attr("height", height);
     		}
 
-    		
+
 
     		// Select svg
     		const svg = container.select("svg");
@@ -11461,7 +11460,7 @@ var app = (function () {
         y: 10,
         type: "advice",
         title: "Licht",
-        text: "Zet uw auto op een goed verlichtte parkeerplaats."
+        text: "Zet uw auto op een goed verlichte parkeerplaats."
       },
       {
         x: 90,
@@ -11842,7 +11841,7 @@ var app = (function () {
     			p0.textContent = "Onderstaande grafiek geeft automerken aan die naar verhouding het meest gestolen worden.\n\t\t\tEr kan ook gefilterd worden op alleen autotypes.";
     			t3 = space();
     			p1 = element("p");
-    			p1.textContent = "Het valt hierbij meteen op dat Volkswagens veruit het meeste gestolen worden, maar vergeleken met andere merken als Land Rover, Lexus en Audi een lager risico lopen om gestolen te worden.";
+    			p1.textContent = "Het valt hierbij meteen op dat Volkswagens veruit het meest gestolen worden, maar vergeleken met andere merken als Land Rover, Lexus en Audi een lager risico lopen om gestolen te worden.";
     			t5 = space();
     			create_component(info.$$.fragment);
     			add_location(h2, file$7, 35, 2, 1243);
@@ -11951,14 +11950,14 @@ var app = (function () {
     			h2.textContent = "Waar worden de meeste auto’s gestolen?";
     			t1 = space();
     			p0 = element("p");
-    			p0.textContent = "De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente";
+    			p0.textContent = "De kaart hieronder geeft een beeld van de verschillende verhoudingen tussen het aantal gestolen auto's en de inwoners/wagenpark per gemeente.";
     			t3 = space();
     			p1 = element("p");
     			p1.textContent = "Wat op deze kaart vooral opvalt is het verschil tussen \"Auto's gestolen per 10.000 inwoners\" en \"Auto's gestolen per 10.000 auto's\".\n\t\t\tHet laatste geeft een veel gematigder verschil tussen de gemeentes weer: er zijn minder uitschieters.";
     			t5 = space();
     			create_component(info.$$.fragment);
-    			add_location(h2, file$7, 48, 2, 1813);
-    			add_location(p0, file$7, 49, 2, 1863);
+    			add_location(h2, file$7, 48, 2, 1812);
+    			add_location(p0, file$7, 49, 2, 1862);
     			add_location(p1, file$7, 52, 2, 2020);
     		},
     		m: function mount(target, anchor) {
